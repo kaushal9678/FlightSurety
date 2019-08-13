@@ -38,13 +38,7 @@ import "./flightsurety.css";
       contract.flights.forEach(flight => {
         displayList(flight, DOM.flightSelector);
       });
-      /* display("Operational Status", "Check if contract is operational", [
-        {
-          label: "Operational Status",
-          error: error,
-          value: result
-        }
-      ]); */
+      
     });
 
     contract.flightSuretyApp.events.FlightStatusInfo(
@@ -83,6 +77,7 @@ import "./flightsurety.css";
         if (error) {
           console.log(error);
         } else {
+          
           alert(
             `Account ${result.returnValues.passenger} got refunded ${
               result.returnValues.amount
@@ -97,11 +92,6 @@ import "./flightsurety.css";
       // I know this manipulation is not safe nor recommended, but it just to make it to work now
 
       contract.isOperational((error, result) => {
-        /*  contract.flights.forEach(flight => {
-          displayList(flight, DOM.flightSelector);
-        }); */
-
-        console.log(DOM.elid("operationStatus"));
         DOM.elid("operationStatus").innerHTML =
           "contract is Operational=" + JSON.stringify(result);
       });
