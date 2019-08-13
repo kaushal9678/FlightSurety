@@ -38,13 +38,13 @@ import "./flightsurety.css";
       contract.flights.forEach(flight => {
         displayList(flight, DOM.flightSelector);
       });
-      display("Operational Status", "Check if contract is operational", [
+      /* display("Operational Status", "Check if contract is operational", [
         {
           label: "Operational Status",
           error: error,
           value: result
         }
-      ]);
+      ]); */
     });
 
     contract.flightSuretyApp.events.FlightStatusInfo(
@@ -186,34 +186,3 @@ function display(title, description, results, customClass = null) {
   displayDiv.append(section);
 }
 
-function displayContractStatus(
-  title,
-  contractAddress,
-  description,
-  results,
-  customClass = null
-) {
-  let displayDiv = DOM.elid("row");
-  let section = DOM.section();
-  section.appendChild(DOM.h2(title));
-  section.appendChild(DOM.h5(contractAddress));
-  section.appendChild(DOM.h5(results));
-  results.map(result => {
-    let row = section.appendChild(DOM.div({ className: "row " + customClass }));
-    row.appendChild(DOM.div({ className: "col-sm-3 field" }, result.label));
-    row.appendChild(
-      DOM.div(
-        { className: "col-sm-7 field-value" },
-        result.error ? String(result.error) : String(result.value)
-      )
-    );
-    row.appendChild(
-      DOM.div(
-        { className: "col-sm-2 results" },
-        customClass ? "Fetching status" : ""
-      )
-    );
-    section.appendChild(row);
-  });
-  displayDiv.append(section);
-}

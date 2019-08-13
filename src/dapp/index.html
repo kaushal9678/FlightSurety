@@ -12,7 +12,6 @@
 </head>
 
 <body>
-
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
         <a class="navbar-brand" href="#">FlightSurety</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
@@ -27,13 +26,12 @@
                     </a>
                 </li> 
                 <li class="nav-item" id="airlines-resource">
-                    <a class="nav-link" href="javascript:void(0)" onclick="airlineShow('airlines-resource-forms')">Airlines</a>
+                    <a class="nav-link" href="javascript:void(0)" onclick="airlineShow('airlines-resource-forms')">Flights</a>
                 </li>
-                <!-- <li class="nav-item" id="flights-resource">
-                    <a class="nav-link" href="#">Flights</a>
-                </li> -->
+               
                 <li class="nav-item" id="insurances-resource">
-                    <a class="nav-link" href="javascript:void(0)" onclick="airlineShow('insurances-resource-forms')">Insurances</a>
+                   
+                    <a class="nav-link" href="javascript:void(0)" onclick="airlineShow('insurances-resource-forms')">Insurance</a>
                 </li>
             </ul>
         </div>
@@ -69,148 +67,104 @@
     <div class="container my-container" id="airlines-resource-forms" style="display: none">
         <div class="row">
             <div class="col-12">
-                <h1>Airlines</h1>
-                <h3>Register Airline</h3>
-                <form>
+                <h1>Flights</h1>
+             
+                <div class="top-20">
+                    <label>
+                        Flights
+                        <select id="flights-selector"> </select>
+                    </label>
                     <div class="form-group">
-                        <label class="form">Airline Address</label>
-                        <input type="text" class="form-control" id="airline-address">
+                       
+                        <input type="button" class="btn btn-primary" id="submit-oracle" value="Submit to Oracles">
                     </div>
-                    <div class="form-group">
-                        <label class="form">Message Sender</label>
-                        <input type="text" class="form-control" id="airline-register-from" placeholder="Enter address of the message sender, if empty, then contract owner will be used">
-                    </div>
-                    <div class="form-group">
-                        <input type="button" class="btn btn-primary" id="airline-register" value="Register Airline">
-                    </div>
-                </form>
+                    
             </div>
+            <div id="display-wrapper" class="top-20"></div>
         </div>
     </div>
 
-    <!--FLIGHTS-->
-    <div class="container my-container" id="flights-resource-forms" style="display: none">
-        <div class="row">
-            <div class="col-12">
-                <h1>Flights</h1>
-                <h3>Register Flight</h3>
-                <form>
-                    <div class="form-group">
-                        <label class="form">Airline Address</label>
-                        <input type="text" class="form-control" id="register-flight-airline-address">
-                    </div>
-                    <div class="form-group">
-                        <label class="form">Flight Code</label>
-                        <input type="text" class="form-control" id="register-flight-flight-code">
-                    </div>
-                    <div class="form-group">
-                        <label class="form">Departure Time</label>
-                        <input type="datetime-local" class="form-control" id="register-flight-departure">
-                    </div>
-                    <div class="form-group">
-                        <label class="form">Message Sender</label>
-                        <input type="text" class="form-control" id="register-flight-from" placeholder="Enter address of the message sender, if empty, then contract owner will be used">
-                    </div>
-                    <div class="form-group">
-                        <input type="button" class="btn btn-primary" id="register-flight" value="Register Flight">
-                    </div>
-                </form>
-                <h3>Refresh Flight Status</h3>
-                <form>
-                    <div class="form-group">
-                        <label class="form">Airline Address</label>
-                        <input type="text" class="form-control" id="submit-oracle-airline-address">
-                    </div>
-                    <div class="form-group">
-                        <label class="form">Flight Code</label>
-                        <input type="text" class="form-control" id="submit-oracle-flight-code">
-                    </div>
-                    <div class="form-group">
-                        <label class="form">Departure Time</label>
-                        <input type="datetime-local" class="form-control" id="submit-oracle-departure">
-                    </div>
-                    <div class="form-group">
-                        <input type="button" class="btn btn-primary" id="submit-oracle" value="Refresh">
-                    </div>
-                </form>
-                <h3>Get Flight</h3>
-                <form>
-                    <div class="form-group">
-                        <label class="form">Flight Id</label>
-                        <input type="text" class="form-control" id="get-flight-flight-id">
-                    </div>
-                    <div class="form-group">
-                        <input type="button" class="btn btn-primary" id="get-flight" value="Get Flight">
-                    </div>
-                </form>
-            </div>
-        </div>
+    <div style="flex: 1;">
+        
+        <h3>Buy Insurance</h3>
+        <label style="display: flex; flex-direction: column">
+            Amount (ether)
+            <input style="margin-left: 7px" id="valueStep" type="number" min="0" max="1" step="0.1" />
+        </label>
+        <button style="margin-left: 7px" class="btn btn-primary" id="buyInsurance">
+            Buy Insurance
+        </button>
     </div>
+    
+</div>
+   
 
     <!--INSURANCES-->
-    <div class="container my-container" id="insurances-resource-forms" style="display: none">
-        <div class="row">
-            <div class="col-12">
-                <h1>Insurances</h1>
-                <h3>Buy Insurance</h3>
-                <form>
-                    <div class="form-group">
-                        <label class="form">Flight Id</label>
-                        <input type="text" class="form-control" id="buy-insurance-flight-code" placeholder="Flight Id (not flight code) for which you want to buy insurance">
-                    </div>
-                    <div class="form-group">
-                        <label class="form">Insurance Premium (Ether)</label>
-                        <input type="number" class="form-control" id="buy-insurance-paid-amount">
-                    </div>
-                    <div class="form-group">
-                        <label class="form">Message Sender (Passenger)</label>
-                        <input type="text" class="form-control" id="buy-insurance-from" placeholder="Enter address of the message sender, if empty, then contract owner will be used">
-                    </div>
-                    <div class="form-group">
-                        <input type="button" class="btn btn-primary" id="buy-insurance" value="Buy">
-                    </div>
-                </form>
-                <h3>Check credited amount</h3>
-                <form>
-                    <div class="form-group">
-                        <label class="form">Passenger Address</label>
-                        <input type="text" class="form-control" id="get-credited-amount-passenger-address">
-                    </div>
-                    <div class="form-group">
-                        <input type="button" class="btn btn-primary" id="get-credited-amount" value="Check Amount">
-                    </div>
-                </form>
-                <h3>Withdraw credited amount</h3>
-                <form>
-                    <div class="form-group">
-                        <label class="form">Passenger Address</label>
-                        <input type="text" class="form-control" id="withdraw-credited-amount-passenger-address">
-                    </div>
-                    <div class="form-group">
-                        <label class="form">Amount to Withdraw (Ether)</label>
-                        <input type="number" class="form-control" id="withdraw-credited-amount-amount">
-                    </div>
-                    <div class="form-group">
-                        <label class="form">Message Sender (Passenger)</label>
-                        <input type="text" class="form-control" id="withdraw-credited-amount-from" placeholder="Passenger address entered above will be used, when this field is empty">
-                    </div>
-                    <div class="form-group">
-                        <input type="button" class="btn btn-primary" id="withdraw-credited-amount" value="Withdraw Amount">
-                    </div>
-                </form>
-                <h3>Get Insurance</h3>
-                <form>
-                    <div class="form-group">
-                        <label class="form">Insurance Id</label>
-                        <input type="text" class="form-control" id="get-insurance-id">
-                    </div>
-                    <div class="form-group">
-                        <input type="button" class="btn btn-primary" id="get-insurance" value="Get Insurance">
-                    </div>
-                </form>
-            </div>
+
+<div class="container my-container" id="insurances-resource-forms" style="display: none">
+    <div class="row">
+        <div class="col-12">
+            <h1>Insurance</h1>
+            <h3>Buy Insurance</h3>
+            <form>
+                
+                <div class="form-group">
+                    <label class="form">Insurance Premium (Ether)</label>
+                    <input type="number" class="form-control" id="valueStep">
+                </div>
+                <div class="form-group">
+                    <label class="form">Message Sender (Passenger)</label>
+                    <input type="text" class="form-control" id="buy-insurance-from" placeholder="Enter address of the message sender, if empty, then contract owner will be used">
+                </div>
+                <div class="form-group">
+                    <input type="button" class="btn btn-primary" id="buy-insurance" value="Buy">
+                </div>
+            </form>
+<!--             <h3>Check credited amount</h3>
+            <form>
+                <div class="form-group">
+                    <label class="form">Passenger Address</label>
+                    <input type="text" class="form-control" id="get-credited-amount-passenger-address">
+                </div>
+                <div class="form-group">
+                    <input type="button" class="btn btn-primary" id="get-credited-amount" value="Check Amount">
+                </div>
+            </form>
+            <h3>Withdraw credited amount</h3>
+            <form>
+                <div class="form-group">
+                    <label class="form">Passenger Address</label>
+                    <input type="text" class="form-control" id="withdraw-credited-amount-passenger-address">
+                </div>
+                <div class="form-group">
+                    <label class="form">Amount to Withdraw (Ether)</label>
+                    <input type="number" class="form-control" id="withdraw-credited-amount-amount">
+                </div>
+                <div class="form-group">
+                    <label class="form">Message Sender (Passenger)</label>
+                    <input type="text" class="form-control" id="withdraw-credited-amount-from" placeholder="Passenger address entered above will be used, when this field is empty">
+                </div>
+                <div class="form-group">
+                    <input type="button" class="btn btn-primary" id="withdraw-credited-amount" value="Withdraw Amount">
+                </div>
+            </form>
+            <h3>Get Insurance</h3>
+            <form>
+                <div class="form-group">
+                    <label class="form">Insurance Id</label>
+                    <input type="text" class="form-control" id="get-insurance-id">
+                </div>
+                <div class="form-group">
+                    <input type="button" class="btn btn-primary" id="get-insurance" value="Get Insurance">
+                </div>
+            </form> -->
         </div>
     </div>
+</div>
+</div>
+
+
+
 
     <!--CONTENT AREA-->
     <div class="container my-container" id="content-area">
@@ -221,18 +175,36 @@
             </div>
         </div>
     </div>
-    <script>
-    function airlineShow(elementId) {
-           // document.getElementsByClassName("container").style.display = "none";
-
-            var appBanners = document.getElementsByClassName('container'), i;
-
+   
+   <script>
+   
+   /*  function airlineShow(elementId) {
+           var appBanners = document.getElementsByClassName('container'), i;
+           //var nav = document.getElementsByClassName('nav-item'), j;
+        
         for (var i = 0; i < appBanners.length; i++) {
             appBanners[i].style.display = 'none';
         }
+
+         for (var j = 0; j < nav.length; j++) {
+            nav[j].className.replace("active", "");
+            
+        } 
+        obj.parentNode.className +=" active";
         document.getElementById(elementId).style.display = "block";
-      //  DOM.elid().style.display = "block";
-        }
+     
+        } */
+         function airlineShow(elementId) {
+                // document.getElementsByClassName("container").style.display = "none";
+                var appBanners = document.getElementsByClassName('container'), i;
+                for (var i = 0; i < appBanners.length; i++) {
+                    appBanners[i].style.display = 'none';
+                }
+                document.getElementById(elementId).style.display = "block";
+                //  DOM.elid().style.display = "block";
+            }
+
+        
     </script>
 </body>
 
