@@ -39,6 +39,18 @@ To build dapp for prod:
 
 Deploy the contents of the ./dapp folder
 
+Final App will work like following screenshots
+
+![truffle test](images/1.png)
+
+>To Check Contract status it will show output like this
+![truffle test](images/2.png)
+
+>To Submit flight to oracles for status it will show output like this
+![truffle test](images/3.png)
+
+>After buying an insurance
+![truffle test](images/4.png)
 
 ## Resources
 
